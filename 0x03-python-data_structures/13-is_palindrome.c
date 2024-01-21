@@ -1,59 +1,54 @@
 #include "lists.h"
 
 /**
- * allocate_memory - allocate required memory for an array
- * @head: head node of listint_t
- *
- * Return: allocated array
+ * comp_lists - comp lists
+ * @p1: p1
+ * @p2: p2
+ * Return: 1 if pal else 0
  */
-int *allocate_memory(listint_t *head)
+int comp_lists(listint_t *p1, listint_t *p2)
 {
-	int *arr;
-	size_t size;
-
-	size = 0;
-	while (head)
-		size++, head = head->next;
-
-	arr = malloc(sizeof(int) * size);
-	if (!arr)
-		exit(1);
-	return (arr);
+	while (p1 && p2)
+	{
+		if (p1->n != p2->n)
+			return (0);
+		p1 = p1->next;
+		p2 = p2->next;
+	}
+	return (1);
 }
-
 /**
- * is_palindrome - checks if a list is palindrom
- * @head: pointer to head node of list
- *
- * Return: 1 (Palindrom) | 0 (Not a Palindrom)
+ * is_palindrome - checks if a linked list is a palindrome
+ * @head: head
+ * Return: 0 if it is not a palindrome, 1 if it is a palindrome
  */
+
 int is_palindrome(listint_t **head)
 {
-	listint_t *tmp;
-	int i, *values;
+	listint_t *slow, *fast, *prev, *next;
+	int is_pal;
 
-	if (!head || !(*head))
+	slow = *head;
+	fast = *head;
+	prev = NULL;
+	next = NULL;
+
+	if (!*head || !(*head)->next)
 		return (1);
 
-	values = allocate_memory(*head);
-	tmp = *head, i = -1;
-	while (tmp)
+	while (fast && fast->next)
 	{
-		values[++i] = tmp->n;
-		tmp = tmp->next;
+		fast = fast->next->next;
+		next = slow->next;
+		slow->next = prev;
+		prev = slow;
+		slow = next;
 	}
 
-	tmp = *head;
-	for (; i >= 0; i--)
-	{
-		if (values[i] != tmp->n)
-		{
-			free(values);
-			return (0);
-		}
-		tmp = tmp->next;
-	}
+	if (fast)
+		slow = slow->next;
 
-	free(values);
-	return (1);
+	is_pal = comp_lists(prev, slow);
+
+	return (is_pal);
 }
