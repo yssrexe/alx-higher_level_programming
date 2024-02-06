@@ -2,6 +2,7 @@
 
 """class Square that defines a square"""
 
+
 class Square:
     """A class representing a square."""
     def __init__(self, size=0):
@@ -11,5 +12,3 @@ class Square:
             raise ValueError("size must be >= 0")
         else:
             self.__size = size
-
-        
