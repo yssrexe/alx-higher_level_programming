@@ -6,7 +6,7 @@ Real definition of a rectangle
 """
 
 
-class Rectangle:
+class Rectangle():
     """Rectangle class"""
 
     def __init__(self, width=0, height=0):
@@ -35,6 +35,6 @@ class Rectangle:
         if type(value) is not int:
             raise TypeError("height must be an integer")
         elif value < 0:
-            raise TypeError("height must be >= 0")
+            raise ValueError("height must be >= 0")
         else:
             self.__height = value
