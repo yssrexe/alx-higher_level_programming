@@ -1,19 +1,19 @@
 #!/usr/bin/python3
 """
-This is '7-base_geometry' module.
-Functions and Classes:
-    class BaseGeometry
+7-base_geometry.py
+class:
+BaseGeometry
 """
 
 
 class BaseGeometry():
-    """Geometry class"""
+    """BaseGeometry class"""
     def area(self):
-        """raise an Exception"""
+        """def area"""
         raise Exception("area() is not implemented")
 
     def integer_validator(self, name, value):
-        """validate that value is an integer"""
+        """def integer_validator"""
         if type(value) not in [int, float]:
             raise TypeError("{:s} must be an integer".format(name))
         elif value <= 0:
