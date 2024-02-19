@@ -7,9 +7,10 @@ You can assume that all the elements
 
 
 class MyList(list):
+    """
+    subclass that inherits from 'list' class
+    """
     def print_sorted(self):
-        """
-        Prints the list in sorted order
-        """
+        """print sorted list in ascending order"""
         sort_list = sorted(self)
         print(sort_list)
