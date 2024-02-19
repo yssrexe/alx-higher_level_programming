@@ -6,11 +6,8 @@ BaseGeometry
 """
 
 
-class BaseGeometry:
-    """empty class"""
-    pass
-
-
-def area(self):
-    """def area"""
-    raise Exception("area() is not implemented")
+class BaseGeometry():
+    """BaseGeometry class"""
+    def area(self):
+        """def area"""
+        raise Exception("area() is not implemented")
