@@ -13,4 +13,5 @@ def inherits_from(obj, a_class):
     if isinstance(obj, type):
         return issubclass(obj, a_class)
     else:
-        return any(inherits_from(base, a_class) for base in obj.__class__.__bases__)
+        return any(inherits_from(base, a_class)
+                   for base in obj.__class__.__bases__)
