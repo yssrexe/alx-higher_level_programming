@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """
 1-write_file.py
-Prototype: 
+Prototype:
 def write_file(filename="", text=""):
 """
 
