@@ -1,128 +1,80 @@
 #!/usr/bin/python3
-"""
-This is 'rectangle' class
-Functions and Classes:
-    class Rectangle(Base)
-"""
+"""Square class"""
+from models.rectangle import Rectangle
 
 
-from models.base import Base
+class Square(Rectangle):
+    """Class Square that inherits from Rectangle"""
 
+    def __init__(self, size, x=0, y=0, id=None):
+        """
+        Initializes a new Square object.
 
-class Rectangle(Base):
-    """
-    represent a rectangle
-    """
+        Args:
+            size (int): the size of the Square instance
+            x (int, optional): The x postion of the instance. Defaults to 0.
+            y (int, optional): The y postion of the instance. Defaults to 0.
+            id (id, optional): the id of the instance. Defaults to None.
+        """
+        super().__init__(id=id, width=size, height=size, x=x, y=y)
 
-    def __init__(self, width, height, x=0, y=0, id=None):
-        self.width = width
-        self.height = height
-        self.x = x
-        self.y = y
-        super().__init__(id)
+    def __str__(self):
+        """
+        Returns a string representation of the square.
+
+        Returns:
+            str: [Square] (<id>) <x>/<y> - <size>
+        """
+        return f"[Square] ({self.id}) {self.x}/{self.y} - {self.width}"
 
     @property
-    def width(self):
-        return self.__width
+    def size(self):
+        """size getter method
 
-    @width.setter
-    def width(self, value):
-        if type(value) is not int:
-            raise TypeError("width must be an integer")
-        if value <= 0:
-            raise ValueError("width must be > 0")
-        self.__width = value
-
-    @property
-    def height(self):
-        return self.__height
-
-    @height.setter
-    def height(self, value):
-        if type(value) is not int:
-            raise TypeError("height must be an integer")
-        if value <= 0:
-            raise ValueError("height must be > 0")
-        self.__height = value
-
-    @property
-    def x(self):
-        return self.__x
-
-    @x.setter
-    def x(self, value):
-        if type(value) is not int:
-            raise TypeError("x must be an integer")
-        if value < 0:
-            raise ValueError("x must be >= 0")
-        self.__x = value
-
-    @property
-    def y(self):
-        return self.__y
-
-    @y.setter
-    def y(self, value):
-        if type(value) is not int:
-            raise TypeError("y must be an integer")
-        if value < 0:
-            raise ValueError("y must be >= 0")
-        self.__y = value
-
-    def area(self):
+        Returns:
+            int: The value of size
         """
-        compute and return area of a rectangle
-        """
-        return (self.__width) * (self.__height)
+        return self.width
 
-    def display(self):
+    @size.setter
+    def size(self, value):
+        """size setter method
+
+        Args:
+            value (int): the new value of size
         """
-        print Rectangle instance to stdout using '#'
-        """
-        for i in range(0, self.__y):
-            print()
-        for i in range(0, self.__height):
-            for j in range(0, self.__x):
-                print(" ", end="")
-            for j in range(0, self.__width):
-                print("#", end="")
-            print()
+        self.width = value
+        self.height = value
 
     def update(self, *args, **kwargs):
         """
-        update instance's attributes
+        Updates the attributes of the Square instance.
+
+        Args:
+            *args: A list of attributes to update.
+            **kwargs: A dictionary of attributes to update.
         """
-        if args:
-            for i in range(len(args)):
-                if i == 0:
-                    self.id = args[i]
-                elif i == 1:
-                    self.__width = args[i]
-                elif i == 2:
-                    self.__height = args[i]
-                elif i == 3:
-                    self.__x = args[i]
-                elif i == 4:
-                    self.__y = args[i]
-        elif kwargs:
-            for k, v in kwargs.items():
-                setattr(self, k, v)
+        try:
+            if args:
+                attrs = ("id", "size", "x", "y")
+                for idx, arg in enumerate(args):
+                    setattr(self, attrs[idx], arg)
+            else:
+                for key, value in kwargs.items():
+                    setattr(self, key.lower(), value)
+        except (IndexError, AttributeError):
+            return
 
     def to_dictionary(self):
         """
-        returns the dictionary representation
+        Returns the dictionary representation of a Square.
+
+        Returns:
+            dict: The dictionary representation of a Square:
         """
-        my_dict = {}
-        for attr in dir(self):
-            condition_1 = not attr.startswith("_")
-            condition_2 = not callable(getattr(self, attr))
-            if condition_1 and condition_2:
-                my_dict[attr] = getattr(self, attr)
-
-        return my_dict
-
-    def __str__(self):
-        return (
-            f"[Rectangle] ({self.id}) {self.__x}/{self.__y} - "
-            f"{self.__width}/{self.__height}"
-        )
+        return {
+            "id": self.id,
+            "size": self.size,
+            "x": self.x,
+            "y": self.y
+        }
