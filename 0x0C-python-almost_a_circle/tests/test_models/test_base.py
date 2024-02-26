@@ -4,6 +4,7 @@ from models.base import Base
 from models.rectangle import Rectangle
 from models.square import Square
 
+
 class TestBase(unittest.TestCase):
 
     def test_type(self):
@@ -43,7 +44,7 @@ class TestBase(unittest.TestCase):
         my_list = ['"size": 5', '"size": 15', '"x": 0']
         for i in my_list:
             self.assertIn(i, json_s)
-        
+
         d = Rectangle(3, 2, id=400)
         d_dict = d.to_dictionary()
         json_s = Base.to_json_string([a_dict, b_dict, d_dict, c_dict])
@@ -68,5 +69,5 @@ class TestBase(unittest.TestCase):
         self.assertEqual(a.x, a_dict['x'])
         self.assertEqual(a.y, a_dict['y'])
 
-if __name__ == '__main__':
-    unittest.main()
+    if __name__ == '__main__':
+        unittest.main()

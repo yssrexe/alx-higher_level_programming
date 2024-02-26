@@ -2,15 +2,15 @@ import unittest
 
 from models.rectangle import Rectangle
 
+
 class TestRectangle(unittest.TestCase):
 
     def test_type(self):
         a = Rectangle(10, 20, 1, 3, 100)
         b = Rectangle(10, 20, 33, id=101)
         c = Rectangle(1, 1, id=102)
-
-        l = [a, b, c]
-        for i in l:
+        rectangles = [a, b, c]
+        for i in rectangles:
             self.assertIsInstance(i, Rectangle)
 
     def test_values(self):
@@ -103,5 +103,5 @@ class TestRectangle(unittest.TestCase):
         d = a.to_dictionary()
         self.assertNotEqual(d, tmp)
 
-if __name__ == '__main__':
-    unittest.main()
+    if __name__ == '__main__':
+        unittest.main()

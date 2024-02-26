@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 from models.base import Base
 
+
 class Rectangle(Base):
     def __init__(self, width, height, x=0, y=0, id=None):
         super().__init__(id)
@@ -8,7 +9,7 @@ class Rectangle(Base):
         self.height = height
         self.x = x
         self.y = y
-    
+
     @property
     def width(self):
         """Getter for width."""
@@ -77,10 +78,12 @@ class Rectangle(Base):
         for _ in range(self.height):
             print(" " * self.x, end="")
             print("#" * self.width)
-            
 
     def __str__(self):
-        return f"[Rectangle] ({self.id}) {self.x}/{self.y} - {self.width}/{self.height}"
+        return (
+            f"[Rectangle] ({self.id}) {self.x}/{self.y} - "
+            f"{self.width}/{self.height}"
+        )
 
     def update(self, *args, **kwargs):
         if args:
@@ -98,4 +101,3 @@ class Rectangle(Base):
         elif kwargs:
             for k, v in kwargs.items():
                 setattr(self, k, v)
-

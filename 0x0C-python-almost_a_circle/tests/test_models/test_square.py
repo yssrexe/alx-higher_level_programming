@@ -2,15 +2,15 @@ import unittest
 
 from models.square import Square
 
+
 class TestSquare(unittest.TestCase):
 
     def test_type(self):
         a = Square(5)
         b = Square(20, 0, 2, 3033030)
         c = Square(id=77, size=90)
-
-        l = [a, b, c]
-        for i in l:
+        rectangles = [a, b, c]
+        for i in rectangles:
             self.assertIsInstance(i, Square)
 
     def test_assign(self):
@@ -58,5 +58,5 @@ class TestSquare(unittest.TestCase):
         d = a.to_dictionary()
         self.assertNotEqual(d, tmp)
 
-if __name__ == '__main__':
-    unittest.main()
+    if __name__ == '__main__':
+        unittest.main()
