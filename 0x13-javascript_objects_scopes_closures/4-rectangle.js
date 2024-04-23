@@ -23,8 +23,8 @@ class Rectangle {
 
     rotate()
     {
-        for (let index = 0; index < this.width * 2; index++) {
-            console.log('X'.repeat(this.height * 2, 10))
+        for (let index = 0; index < this.width; index++) {
+            console.log('X'.repeat(this.height, 10))
         }
     }
 }
