@@ -1,8 +1,10 @@
 #!/usr/bin/python3
 import MySQLdb
 import sys
-
-def SInject():
+"""
+   a script that takes in an argument and displays all values
+"""
+if __name__ == "__main__":
     args = sys.argv
     mydb = MySQLdb.connect(
         host="localhost",
@@ -13,10 +15,9 @@ def SInject():
         charset="utf8"
     )
     mycursor = mydb.cursor()
-    mycursor.execute("""SELLECT * from states WHERE BINARY name = '{}' ORDER BY id ASC""")
+    stat = """SELECT * FROM states WHERE BINARY name = %s ORDER BY id ASC"""
+    mycursor.execute(stat ,(args[4],))
     result = mycursor.fetchall()
     for row in result:
         print(row)
 
-if __name__ == "__main__":
-    SInject()
