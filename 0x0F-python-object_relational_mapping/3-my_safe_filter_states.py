@@ -6,7 +6,7 @@ import sys
 """
 
 
-if __name__ == "__main__":
+def main():
     args = sys.argv
     mydb = MySQLdb.connect(
         host="localhost",
@@ -23,3 +23,7 @@ if __name__ == "__main__":
     result = mycursor.fetchall()
     for row in result:
         print(row)
+
+
+if __name__ == "__main__":
+    main()
