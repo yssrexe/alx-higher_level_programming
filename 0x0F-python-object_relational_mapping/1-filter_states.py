@@ -15,11 +15,13 @@ def allst():
         charset="utf8"
     )
     mycursor = mydb.cursor()
-    mycursor.execute("SELECT * FROM states WHERE BINARY name LIKE 'N%' ORDER BY id ASC")
-    
+    mycursor.execute("""SELECT * FROM states
+                        WHERE BINARY name LIKE 'N%' ORDER BY id ASC""")
+
     result = mycursor.fetchall()
     for row in result:
         print(row)
-        
+
+
 if __name__ == "__main__":
     allst()
