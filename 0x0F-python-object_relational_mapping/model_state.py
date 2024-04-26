@@ -1,4 +1,4 @@
-#!/usr/bin/
+#!/usr/bin/python3
 """
     python file that contains the class definition
 """
