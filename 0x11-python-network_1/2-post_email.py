@@ -2,8 +2,22 @@
 """
 Python script that takes in a URL and an email
 """
-import sys
-import urllib.request
+def main():
+    """
+    Send POST request to URL with email parameter &
+    display response body
+    """
+    import urllib.request
+    import urllib.parse
+    from sys import argv
 
-arv = sys.argv
-print(f"Your email is: {arv[2]}")
+    URL, email = argv[1], argv[2]
+    values = {'email': email}
+    data = urllib.parse.urlencode(values).encode('ascii')
+    req = urllib.request.Request(URL, data)
+    with urllib.request.urlopen(req) as response:
+        print(response.read().decode())
+
+
+if __name__ == '__main__':
+    main()
