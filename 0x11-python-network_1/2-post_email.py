@@ -2,6 +2,8 @@
 """
 Python script that takes in a URL and an email
 """
+
+
 def main():
     """
     Send POST request to URL with email parameter &
