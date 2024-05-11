@@ -9,6 +9,6 @@ import requests
 arv = sys.argv
 
 urs = requests.get(arv[1])
-data = urs.headers["X-Request-Id"]
+data = urs.headers.get("X-Request-Id")
 
 print(data)
