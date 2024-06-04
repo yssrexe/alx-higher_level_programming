@@ -1,11 +1,11 @@
 #!/usr/bin/node
-const requested = require('request')
-const link = process.argv[2]
+const requested = require('request');
+const lin = require('process').argv[2];
 
-requested(link, (data, err, body) => {
-    if (err) {
-        console.error(`${err.message}`)
-    } else {
-        console.log(`code : ${data.statusCode}`)
-    }
-})
+requested(lin, (err, data) => {
+  if (err) {
+    console.error(`${err.message}`);
+  } else {
+    console.log(`code : ${data.statusCode}`);
+  }
+});
