@@ -6,6 +6,6 @@ requested(lin, (err, data) => {
   if (err) {
     console.error(`${err.message}`);
   } else {
-    console.log(`code : ${data.statusCode}`);
+    console.log(`code: ${data.statusCode}`);
   }
 });
